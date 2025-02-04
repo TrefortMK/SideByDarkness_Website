@@ -36,7 +36,7 @@ const AboutUs = () => {
 <div className="hero bg-base-200 min-h-screen">
   <div className="hero-content flex-col lg:flex-row">
     <img
-      src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
+      src="https://avatars.githubusercontent.com/u/78484157?s=400&u=3d2a0d24039bf220efb79f9d2a7055a626abb94d&v=4"
       className="max-w-sm rounded-lg shadow-2xl" />
     <div>
       <h1 className="text-5xl font-bold">Box Office News!</h1>
