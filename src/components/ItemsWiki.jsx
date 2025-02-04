@@ -7,11 +7,7 @@ const ItemsWiki = () => {
     {/* head */}
     <thead>
       <tr>
-        <th>
-          <label>
-            <input type="checkbox" className="checkbox" />
-          </label>
-        </th>
+       
         <th>Name</th>
         <th>Job</th>
         <th>Favorite Color</th>
@@ -21,11 +17,7 @@ const ItemsWiki = () => {
     <tbody>
       {/* row 1 */}
       <tr>
-        <th>
-          <label>
-            <input type="checkbox" className="checkbox" />
-          </label>
-        </th>
+     
         <td>
           <div className="flex items-center gap-3">
             <div className="avatar">
@@ -53,11 +45,7 @@ const ItemsWiki = () => {
       </tr>
       {/* row 2 */}
       <tr>
-        <th>
-          <label>
-            <input type="checkbox" className="checkbox" />
-          </label>
-        </th>
+     
         <td>
           <div className="flex items-center gap-3">
             <div className="avatar">
@@ -85,11 +73,7 @@ const ItemsWiki = () => {
       </tr>
       {/* row 3 */}
       <tr>
-        <th>
-          <label>
-            <input type="checkbox" className="checkbox" />
-          </label>
-        </th>
+     
         <td>
           <div className="flex items-center gap-3">
             <div className="avatar">
@@ -117,11 +101,7 @@ const ItemsWiki = () => {
       </tr>
       {/* row 4 */}
       <tr>
-        <th>
-          <label>
-            <input type="checkbox" className="checkbox" />
-          </label>
-        </th>
+      
         <td>
           <div className="flex items-center gap-3">
             <div className="avatar">

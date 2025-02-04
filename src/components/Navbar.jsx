@@ -3,6 +3,7 @@ import ItemsWiki from "./ItemsWiki"
 import GameDownload from "./GameDownload"
 import HomePage from "./HomePage"
 import AboutUs from "./AboutUs"
+import Login from "./Login"
 
 
 const navbar = () => {
@@ -29,19 +30,20 @@ const navbar = () => {
         <div className="w-10 rounded-full">
           <img
             alt="Tailwind CSS Navbar component"
-            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+            src="https://static.vecteezy.com/system/resources/thumbnails/030/504/836/small_2x/avatar-account-flat-isolated-on-transparent-background-for-graphic-and-web-design-default-social-media-profile-photo-symbol-profile-and-people-silhouette-user-icon-vector.jpg" />
         </div>
       </div>
       <ul
         tabIndex={0}
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
         <li>
-          <a className="justify-between">
+          <Link to={"profile"} className="justify-between">
             Profile
             <span className="badge">New</span>
-          </a>
+          </Link>
         </li>
-        <li><a>Settings</a></li>
+        <li><Link to={"settings"}>Settings</Link></li>
+        <li><Link to={"login"}>Login</Link></li>
         <li><a>Logout</a></li>
       </ul>
     </div>
