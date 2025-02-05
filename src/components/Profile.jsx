@@ -8,7 +8,7 @@ const Profile = () => {
     <img src='#kepek' />
   </div>
 </div>
-      <input type="file" id='kepek'  className="file-input file-input-bordered w-full max-w-xs" />
+      <input type="file"  accept="image/png, image/gif, image/jpeg"  id='kepek'  className="file-input file-input-bordered w-full max-w-xs" />
       </div>
   )
 }
