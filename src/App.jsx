@@ -11,6 +11,7 @@ import ItemsWiki from './components/ItemsWiki';
 import Login from './components/Login';
 import Profile from './components/Profile';
 import Settings from './components/Settings';
+import Register from './components/Register';
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
             <Route path = {"/login"} element = {<Login />}/>
             <Route path = {"/profile"} element = {<Profile />}/>
             <Route path = {"/settings"} element = {<Settings />}/>
+            <Route path = {"/register"} element = {<Register />}/>
             </Routes>
           </Router>
     </>

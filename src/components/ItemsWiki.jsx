@@ -3,8 +3,11 @@ import React from 'react'
 const ItemsWiki = () => {
   return (
      <>
-     <label className="input input-bordered flex items-center gap-2">
-  <input type="text" className="grow" placeholder="Search" />
+     <div className='flex items-center justify-center'>
+     <label className="input w-96 input-bordered flex items-center gap-2">
+  <input type="text" className="grow  display-flex
+        items-center
+        justify-center" placeholder="Search" />
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 16 16"
@@ -16,6 +19,7 @@ const ItemsWiki = () => {
       clipRule="evenodd" />
   </svg>
 </label>
+     </div>
  
     <div className="overflow-x-auto">
   <table className="table">
