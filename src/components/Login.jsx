@@ -3,12 +3,9 @@ import React from 'react'
 const Login = () => {
   return (
     <>
-    <body className='' style={{
-    backgroundImage: "url(./testwallpaper.jpg)",
-  }}>
-      
-    </body>
-    <div className='flex items-center justify-center gap-5 '>
+    <img src="https://img.freepik.com/free-vector/dark-hexagonal-background-with-gradient-color_79603-1409.jpg?semt=ais_hybrid" alt="" />
+    <body > 
+    <div className='flex items-center justify-center gap-5 ' >
 <label className="input input-bordered flex items-center gap-2">
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -41,7 +38,9 @@ const Login = () => {
 <div className='flex items-center justify-center' >
 <button className="btn btn-outline flex items-center justify-center">Login</button>
 </div>
+</body>
 </>
+
   )
 }
 
