@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import SBDContext from '../context/SideByDarknessContext'
 
 const AboutUs = () => {
+  const {theme} = useContext(SBDContext);
+
   return (
-   <>
+   <div>
    <div className="hero bg-base-200 min-h-screen">
   <div className="hero-content flex-col lg:flex-row">
     <img
@@ -48,7 +51,7 @@ const AboutUs = () => {
     </div>
   </div>
 </div>
-   </>
+   </div>
   )
 }
 
