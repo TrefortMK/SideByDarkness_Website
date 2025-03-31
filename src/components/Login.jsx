@@ -82,7 +82,7 @@ const Login = () => {
 
           <div className="text-center mt-4">
             <span className="text-purple-300">Még nincs fiókod? </span>
-            <Link to="register" className="text-purple-400 hover:text-purple-300 transition-colors">
+            <Link to="/register" className="text-purple-400 hover:text-purple-300 transition-colors">
               Regisztrálj most!
             </Link>
           </div>

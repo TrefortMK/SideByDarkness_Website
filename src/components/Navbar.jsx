@@ -59,6 +59,11 @@ const Navbar = () => {
                     Regisztráció
                   </Link>
                 </li>
+                <li>
+                  <Link to="/settings" className="text-purple-200 hover:bg-purple-900/20">
+                    Beállítások
+                  </Link>
+                </li>
               </>
             )}
           </ul>
