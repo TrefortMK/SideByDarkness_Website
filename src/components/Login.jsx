@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const Login = () => {
   const [email, setEmail] = useState('')
@@ -31,57 +32,61 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center 0">
-      <div className=" p-8 rounded-lg shadow-lg max-w-md w-full">
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="space-y-4">
-            <label className="input input-bordered flex items-center gap-2">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 16 16"
-                fill="currentColor"
-                className="h-4 w-4 opacity-70">
-                <path d="M2.5 3A1.5 1.5 0 0 0 1 4.5v.793c.026.009.051.02.076.032L7.674 8.51c.206.1.446.1.652 0l6.598-3.185A.755.755 0 0 1 15 5.293V4.5A1.5 1.5 0 0 0 13.5 3h-11Z" />
-                <path d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" />
-              </svg>
-              <input 
-                type="text" 
-                className="grow" 
-                placeholder="Email" 
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black flex items-center justify-center p-4">
+      <div className="card bg-black/50 border border-purple-900/50 w-full max-w-md">
+        <div className="card-body space-y-4">
+          <h2 className="card-title text-3xl text-purple-300 font-['Bebas_Neue'] mb-6">Bejelentkezés</h2>
+          
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text text-purple-100">Email cím</span>
+              </label>
+              <input
+                type="email"
+                className="input bg-gray-900 border-purple-900/50 text-purple-100 focus:border-purple-500"
+                placeholder="email@example.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
-            </label>
+            </div>
 
-            <label className="input input-bordered flex items-center gap-2">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 16 16"
-                fill="currentColor"
-                className="h-4 w-4 opacity-70">
-                <path
-                  fillRule="evenodd"
-                  d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z"
-                  clipRule="evenodd" />
-              </svg>
-              <input 
-                type="password" 
-                className="grow" 
-                placeholder="Password" 
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text text-purple-100">Jelszó</span>
+              </label>
+              <input
+                type="password"
+                className="input bg-gray-900 border-purple-900/50 text-purple-100 focus:border-purple-500"
+                placeholder="••••••••"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
-            </label>
+            </div>
+
+            {error && (
+              <div className="alert alert-error bg-red-900/50 border-red-900/50 text-red-300">
+                <span>{error}</span>
+              </div>
+            )}
+
+            <button
+              type="submit"
+              className="btn btn-primary bg-purple-800 hover:bg-purple-700 border-purple-900 w-full text-lg"
+            >
+              Bejelentkezés
+            </button>
+          </form>
+
+          <div className="text-center mt-4">
+            <span className="text-purple-300">Még nincs fiókod? </span>
+            <Link to="register" className="text-purple-400 hover:text-purple-300 transition-colors">
+              Regisztrálj most!
+            </Link>
           </div>
-
-          {error && <div className="text-red-500 text-sm">{error}</div>}
-
-          <button type="submit" className="btn btn-primary w-full">
-            Login
-          </button>
-        </form>
+        </div>
       </div>
     </div>
   )
