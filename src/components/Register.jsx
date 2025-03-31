@@ -7,29 +7,28 @@ const Register = () => {
   const [error, setError] = useState('')
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
       const response = await fetch('http://localhost:8000/user/regisztracio', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, username, password }),
-      })
-
-      const data = await response.json()
+      });
+  
+      const data = await response.json();
       
       if (!response.ok) {
-        throw new Error(data.message || 'Registration failed')
+        throw new Error(data.message || 'Regisztrációs hiba!'); // Hibát dob, ha a válasz státusza nem OK
       }
-
-      // Sikeres regisztráció kezelése
-      setError('')
-      alert('Sikeres regisztráció! Most bejelentkezhetsz.')
+  
+      // Sikeres válasz kezelése
+      alert('Sikeres regisztráció! Most bejelentkezhetsz.');
+      setError('');
+      
     } catch (err) {
-      setError(err.message)
+      setError(err.message); // Pontos hibaüzenet megjelenítése
     }
-  }
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center -">

@@ -6,30 +6,29 @@ const Login = () => {
   const [error, setError] = useState('')
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
       const response = await fetch('http://localhost:8000/user/login', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
-      })
-
-      const data = await response.json()
+      });
+  
+      const data = await response.json();
       
       if (!response.ok) {
-        throw new Error(data.message || 'Login failed')
+        throw new Error(data.message || 'Hibás adatok!'); // Hibát dob, ha a válasz státusza nem OK
       }
-
-      // Sikeres bejelentkezés kezelése
-      localStorage.setItem('token', data.token)
-      setError('')
-      alert(`Sikeres bejelentkezés! Üdv, ${data.username}`)
+  
+      // Sikeres válasz kezelése
+      localStorage.setItem('token', data.token);
+      alert(`Sikeres bejelentkezés! Üdv, ${data.username}`);
+      setError('');
+      
     } catch (err) {
-      setError(err.message)
+      setError(err.message); // Pontos hibaüzenet megjelenítése
     }
-  }
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center 0">
