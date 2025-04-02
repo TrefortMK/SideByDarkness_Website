@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom"
+import { Link,useNavigate } from "react-router-dom"
 import { useContext } from "react"
 import SBDContext from "../context/SideByDarknessContext"
 
+
 const Navbar = () => {
-  const { profile, isLoggedIn, handleLogout } = useContext(SBDContext);
+  const { profile, logedin, handleLogout } = useContext(SBDContext);
 
   return (
     <div className="navbar bg-gradient-to-r from-gray-900 to-black border-b border-purple-900/50 px-8">
@@ -33,7 +34,7 @@ const Navbar = () => {
             </div>
           </div>
           <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-gray-900 rounded-box w-52 border border-purple-900/50">
-            {isLoggedIn ? (
+            {logedin ? (
               <>
                 <li>
                   <Link to="/profile" className="text-purple-200 hover:bg-purple-900/20">
