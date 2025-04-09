@@ -5,61 +5,72 @@ const SBDContext = createContext();
 export const SBDContextProvider = ({ children }) => {
     const [profile, setProfile] = useState("https://static.vecteezy.com/system/resources/thumbnails/030/504/836/small_2x/avatar-account-flat-isolated-on-transparent-background-for-graphic-and-web-design-default-social-media-profile-photo-symbol-profile-and-people-silhouette-user-icon-vector.jpg");
     const [theme, setTheme] = useState("light");
-    const [user,setUser] = useState(null)
-    const [logedin,setLogeding] = useState(false)
+    const [user, setUser] = useState(null);
+    const [logedin, setLogedin] = useState(false);
 
     const setThemeDark = (isDark) => {
-        setTheme(isDark ? "dark" : "light");
-        localStorage.setItem("theme", isDark ? "t" : "f");
-    }
-    const handleLogout =  () => {
-        
-            setLogeding(false); // Pontos hibaüzenet megjelenítése
-            localStorage.removeItem("token")
-            const navigate = useNavigate();
-            navigate("/")
-          
-    }
+        const newTheme = isDark ? "dark" : "light";
+        setTheme(newTheme);
+        localStorage.setItem("theme", newTheme);
+    };
+
+    const handleLogout = () => {
+        setLogedin(false);
+        setUser(null);
+        localStorage.removeItem("token");
+        localStorage.removeItem("userEmail");
+    };
+
     const getuser = async () => {
-        if (localStorage.getItem("token") == null) {
-           return;
-         }
+        const token = localStorage.getItem("token");
+        if (!token) return;
+
         try {
-          const response = await fetch('http://localhost:8000/user/getuserbytoken', {
-            method: 'GET',
-            headers: { 'Content-Type': 'application/json','Authorization': `Bearer ${localStorage.getItem("token")}` }
-          });
-      
-          const data = await response.json();
-          
-          if (!response.ok) {
-            throw new Error(data.message || 'Hibás adatok!'); // Hibát dob, ha a válasz státusza nem OK
-          }
-      
-          // Sikeres válasz kezelése
-          setUser(data.user)
-          console.log(data.user)
-          setLogeding(true)
-          
+            const response = await fetch('http://localhost:8000/user/getuserbytoken', {
+                headers: { 
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            });
+            
+            const data = await response.json();
+            if (!response.ok) throw new Error(data.message || "Hibás token");
+
+            setUser(data.user);
+            localStorage.setItem("userEmail", data.user.email);
+            setLogedin(true);
+
+            if (data.user?.profile_picture) {
+                const uint8Array = new Uint8Array(data.user.profile_picture.data);
+                const base64String = btoa(String.fromCharCode.apply(null, uint8Array));
+                setProfile(`data:image/jpeg;base64,${base64String}`);
+            }
         } catch (err) {
-          setLogeding(false); // Pontos hibaüzenet megjelenítése
-          localStorage.removeItem("token")
+            console.error("Felhasználói adatok betöltése sikertelen:", err);
+            handleLogout();
         }
-      };
+    };
 
     useEffect(() => {
-        if (localStorage.getItem("theme") != null) {
-            if (localStorage.getItem("theme") === "t")
-                setThemeDark(true);
-            else if (localStorage.getItem("theme") === "f")
-                setThemeDark(false);
-        }
-        getuser()
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme) setTheme(savedTheme);
+        getuser();
     }, []);
 
-    return <SBDContext.Provider value={{
-        profile, setProfile, setThemeDark, theme,user,logedin,handleLogout,getuser
-    }}>{children}</SBDContext.Provider>
-}
+    return (
+        <SBDContext.Provider value={{
+            profile,
+            setProfile,
+            theme,
+            setThemeDark,
+            user,
+            logedin,
+            handleLogout,
+            getuser
+        }}>
+            {children}
+        </SBDContext.Provider>
+    );
+};
 
 export default SBDContext;

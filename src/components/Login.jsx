@@ -1,40 +1,32 @@
-import React, { useContext, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import SBDContext from '../context/SideByDarknessContext'
+import React, { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import SBDContext from '../context/SideByDarknessContext';
 
 const Login = () => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [error, setError] = useState('')
-  const {getuser} = useContext(SBDContext);
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
+    const { getuser } = useContext(SBDContext);
+    const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await fetch('http://localhost:8000/user/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
-      });
-  
-      const data = await response.json();
-      
-      if (!response.ok) {
-        throw new Error(data.message || 'Hibás adatok!'); // Hibát dob, ha a válasz státusza nem OK
-      }
-  
-      // Sikeres válasz kezelése
-      localStorage.setItem('token', data.token);
-      alert(`Sikeres bejelentkezés! Üdv, ${data.username}`);
-      getuser();
-      setError('');
-      const navigate = useNavigate();
-      navigate("/")
-      
-    } catch (err) {
-      setError(err.message); // Pontos hibaüzenet megjelenítése
-    }
-  };
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await fetch('http://localhost:8000/user/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password }),
+            });
+            const data = await response.json();
+            if (!response.ok) throw new Error(data.message || 'Hibás adatok!');
+            
+            localStorage.setItem('token', data.token);
+            await getuser();
+            navigate("/");
+        } catch (err) {
+            setError(err.message);
+        }
+    };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black flex items-center justify-center p-4">
