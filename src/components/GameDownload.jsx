@@ -33,11 +33,11 @@ const GameDownload = () => {
             <h1 className="text-5xl font-bold font-['Bebas_Neue'] text-purple-300">
               Játék :)
             </h1>
-            
+
             {/* Letöltés gomb */}
             <div className="tooltip" data-tip="Várható méret: 1.2GB">
-              <a 
-                href="/path/to/game.exe" 
+              <a
+                href="/path/to/game.exe"
                 download
                 className="btn btn-lg btn-primary bg-purple-800 hover:bg-purple-700 border-purple-900 text-white animate-pulse"
               >
@@ -46,7 +46,7 @@ const GameDownload = () => {
             </div>
 
             {/* Játék indítás gomb */}
-            <button 
+            <button
               onClick={handlePlay}
               className="btn btn-lg btn-secondary bg-red-700 hover:bg-red-600 border-red-800 text-white gap-2"
             >

@@ -4,7 +4,7 @@ import SBDContext from '../context/SideByDarknessContext';
 const Settings = () => {
   const { theme, setThemeDark } = useContext(SBDContext);
 
-  const capitalizeFirstLetter =(str)  => {
+  const capitalizeFirstLetter = (str) => {
     if (!str) return '';
     return str.charAt(0).toUpperCase() + str.slice(1);
   }
@@ -13,10 +13,10 @@ const Settings = () => {
       <div className="card w-full max-w-md bg-base-100 shadow-xl mx-auto">
         <div className="card-body">
           <h2 className="card-title text-2xl font-bold mb-4">Theme Settings</h2>
-          
+
           <div className="flex flex-col gap-4">
             <div className="flex gap-4 justify-center">
-              <button 
+              <button
                 onClick={() => setThemeDark(false)}
                 className="btn btn-primary gap-2 flex-1"
               >
@@ -25,8 +25,8 @@ const Settings = () => {
                 </svg>
                 Light Theme
               </button>
-              
-              <button 
+
+              <button
                 onClick={() => setThemeDark(true)}
                 className="btn btn-secondary gap-2 flex-1"
               >
@@ -36,7 +36,7 @@ const Settings = () => {
                 Dark Theme
               </button>
             </div>
-            
+
             <div className="text-center mt-4">
               <p className="text-lg font-semibold">
                 Current theme: {" "}

@@ -28,8 +28,8 @@ const ItemsWiki = () => {
       {/* Search Input */}
       <div className="flex items-center justify-center mb-12">
         <div className="relative w-full max-w-2xl">
-          <input 
-            type="text" 
+          <input
+            type="text"
             className="input input-lg w-full bg-black/50 border-purple-900/50 text-purple-100 placeholder-purple-400 focus:outline-none focus:border-purple-500"
             placeholder="Tárgyak keresése..."
             value={searchTerm}
@@ -70,7 +70,7 @@ const ItemsWiki = () => {
                 <td>
                   <div className="avatar">
                     <div className="mask mask-hexagon w-16 h-16 p-1 bg-purple-900/20">
-                      <img 
+                      <img
                         src={item.image_url || '/placeholder-item.png'}
                         alt={item.name}
                         className="object-contain"
@@ -98,7 +98,7 @@ const ItemsWiki = () => {
                 <td>
                   <div className="flex flex-wrap gap-2">
                     {item.buffs?.map((buff) => (
-                      <span 
+                      <span
                         key={buff.buff_id}
                         className="badge badge-lg bg-green-800/50 border-green-900 text-green-200">
                         {buff.name} +{buff.amount}
@@ -111,7 +111,7 @@ const ItemsWiki = () => {
                 <td>
                   <div className="flex flex-wrap gap-2">
                     {item.debuffs?.map((debuff) => (
-                      <span 
+                      <span
                         key={debuff.debuff_id}
                         className="badge badge-lg bg-red-800/50 border-red-900 text-red-200">
                         {debuff.name} -{debuff.amount}

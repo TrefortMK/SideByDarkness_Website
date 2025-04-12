@@ -12,13 +12,13 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('http://localhost:8000/user/login', {
+            const response = await fetch('http://192.168.0.27:8000/user/login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, password }),
             });
             const data = await response.json();
-            if (!response.ok) throw new Error(data.message || 'Hibás adatok!');
+            if (!response.ok) throw new Error("Hibás :)");
             
             localStorage.setItem('token', data.token);
             await getuser();

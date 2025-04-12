@@ -62,19 +62,19 @@ const AboutUs = () => {
               />
               <div className="absolute inset-0 bg-purple-900/20 rounded-2xl mix-blend-multiply transition-opacity group-hover:opacity-0"></div>
             </div>
-            
+
             <div className="max-w-2xl space-y-6">
               <h1 className="text-5xl font-bold font-['Bebas_Neue'] text-purple-300">
                 {member.name}
                 <span className="block text-2xl text-red-400 mt-2">{member.role}</span>
               </h1>
-              
+
               <p className="text-lg text-purple-100 leading-relaxed">
                 {member.description}
               </p>
 
               <div className="space-y-2">
-                <a 
+                <a
                   href={`mailto:${member.email}`}
                   className="inline-block text-purple-400 hover:text-purple-300 transition-colors"
                 >
@@ -82,7 +82,7 @@ const AboutUs = () => {
                 </a>
               </div>
 
-           
+
             </div>
           </div>
         </div>
